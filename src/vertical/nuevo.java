@@ -40,7 +40,7 @@ import java.awt.Toolkit;
 public class nuevo extends JDialog {
 
     // declaramsos las variables
-    private formvertical Padre;               // el formulario padre
+    private formVertical Padre;               // el formulario padre
     private JTextField tDocMadre;             // el documento de la madre
     private JTextField tDocPaciente;          // el documento del paciente
     private pacientes Pacientes;              // objeto de la base de datos
@@ -51,7 +51,7 @@ public class nuevo extends JDialog {
      * Constructor de la clase, instanciamos los objetos e 
      * inicializamos las variables
      */
-    public nuevo(formvertical padre){
+    public nuevo(formVertical padre){
 
         // fijamos como modal
         setModal(true);

@@ -27,14 +27,14 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import dbApi.fuentes;
 import pacientes.formpacientes;
-import vertical.formvertical;
+import vertical.formVertical;
 
 // definimos la clase
 public class MiMarco extends JFrame{
 
     // definimos las variables
     private formpacientes formPacientes;
-    private formvertical formVertical;
+    private formVertical formVertical;
     private JTabbedPane tabulador;
 
 	// constructor de la clase
@@ -159,7 +159,7 @@ public class MiMarco extends JFrame{
 
         // creamos el panel del segundo tabulador
         JPanel tVertical = new JPanel();
-        this.formVertical = new formvertical(tVertical, this.formPacientes);
+        this.formVertical = new formVertical(tVertical, this.formPacientes);
 
         // creamos el panel del tercer tabulador
         JPanel tMuestras = new JPanel();

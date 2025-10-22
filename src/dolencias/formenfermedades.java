@@ -38,6 +38,7 @@ import dbApi.Utilidades;
 import dbApi.calculaFechas;
 import dbApi.fuentes;
 import seguridad.Seguridad;
+import vertical.formVertical;
 import pacientes.formpacientes;
 
 /**
@@ -55,25 +56,55 @@ public class formenfermedades extends JDialog{
 	private int Protocolo;                      // protocolo del paciente
 	private dolencias Sufridas;                 // clase de las enfermedades del paciente
 	private Utilidades Herramientas;            // herramientas para las fechas
-	private formpacientes Padre;                // formulario padre
 
+	/**
+	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+	 * @param padre el formulario de pacientes
+	 * Constructor invocado cuando es llamado desde el formulario
+	 * de pacientes adultos
+	 */
 	public formenfermedades(formpacientes padre) {
+
+		// inicializamos las variables
+		this.Protocolo = padre.getProtocolo();
+
+		// configuramos la interfaz
+		this.setupUi();
+
+	}
+
+	/**
+	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+	 * @param padre el formulario de vertical
+	 * Constructor que es invocado cuando es llamado desde 
+	 * el formulario de chagas vertical
+	 */
+	public formenfermedades(formVertical padre){
+
+		// asignamos el protocolo
+		this.Protocolo = padre.getProtocolo();
+
+		// configuramos la interfaz
+		this.setupUi();
+		
+	}
+
+	/**
+	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+	 * Método que configura la interfaz
+	 */
+	protected void setupUi(){
 
 		// lo fijamos modal
 		setModal(true);
-		
+
         // instanciamos las fuentes
         fuentes Fuente = new fuentes();
-
-		// asignamos el formulario padre
-		this.Padre = padre;
 
         // fijamos el ícono
 		Toolkit miPantalla = Toolkit.getDefaultToolkit();		
 		setIconImage(new ImageIcon(getClass().getResource("/recursos/Logo.jpg")).getImage());
 
-		// inicializamos las variables
-		this.Protocolo = this.Padre.getProtocolo();
 		this.Sufridas = new dolencias();
 		this.Herramientas = new Utilidades();
 

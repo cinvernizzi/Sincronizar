@@ -48,6 +48,8 @@ import localidades.localidades;
 import pacientes.formpacientes;
 import provincias.provincias;
 import seguridad.Seguridad;
+import vertical.formVertical;
+
 import java.util.Date;
 
 // definición de la clase
@@ -68,10 +70,43 @@ public class formtransfusiones extends JDialog {
 	private int Protocolo;                  // protocolo del paciente
 	private Utilidades Herramientas;        // funciones de fecha
 	private transfusiones Hematologia;      // funciones de la base de datos
-	private formpacientes Padre;            // formulario padre
 
-	// constructor de la clase
+	/**
+	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+	 * @param padre el formulario de pacientes adultos
+	 * Método invocado cuando es llamado desde el formulario 
+	 * de pacientes adultos
+	 */
 	public formtransfusiones(formpacientes padre) {
+
+		// obtenemos el protocolo
+		this.Protocolo = padre.getProtocolo();
+
+		// configuramos la interfaz
+		this.setupUi();
+
+	}
+
+	/**
+	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+	 * Método invocado cuando es llamado desde el formulario 
+	 * de chagas vertical
+	 */
+	public formtransfusiones(formVertical padre){
+
+		// asignamos en la clase
+		this.Protocolo = padre.getProtocolo();
+
+		// configuramos la interfaz
+		this.setupUi();
+		
+	}
+
+	/**
+	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+	 * Método que configura la interfaz
+	 */
+	protected void setupUi(){
 
 		// lo fijamos como modal
 		setModal(true);
@@ -80,8 +115,6 @@ public class formtransfusiones extends JDialog {
 		fuentes Fuente = new fuentes();
 		
 		// inicializamos las variables
-		this.Padre = padre;
-		this.Protocolo = Padre.getProtocolo();
 		this.Herramientas = new Utilidades();
 		this.Hematologia = new transfusiones();
 

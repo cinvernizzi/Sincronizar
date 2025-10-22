@@ -27,7 +27,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import dbApi.RendererTabla;
 import dbApi.fuentes;
-import vertical.formvertical;
+import vertical.formVertical;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,6 +38,7 @@ public class formbuscar extends JDialog {
 	// definimos las variables de clase
 	private JTable tPacientes;
 	private formpacientes Padre;
+	private formVertical Madre;
 
 	/**
 	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
@@ -64,13 +65,13 @@ public class formbuscar extends JDialog {
 	 * Constructor de la clase llamado desde el formulario de 
 	 * pacientes vertical
 	 */
-	public formbuscar(formvertical padre){
+	public formbuscar(formVertical padre){
 
 		// fijamos como modal
 		setModal(true);
 
 		// seteamos el padre
-		this.Padre = padre;
+		this.Madre = padre;
 
 		// configuramos la interfaz
 		this.initUi();
@@ -247,8 +248,19 @@ public class formbuscar extends JDialog {
 			// obtenemos el protocolo
 			int protocolo = (Integer) modeloTabla.getValueAt(indice, 0);
 
-			// cargamos el registro
-			this.Padre.getDatosPaciente(protocolo);
+			// si el padre es una instancia 
+			if (this.Padre instanceof formpacientes){
+				
+				// cargamos el registro
+				this.Padre.getDatosPaciente(protocolo);
+
+			// si es una instancia de vertical
+			} else if (this.Madre instanceof formVertical){
+
+				// cargamos el registro
+				this.Madre.getDatosPaciente(protocolo);
+				
+			}
 
 			// cerramos el formulario
 			this.dispose();

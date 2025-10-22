@@ -46,6 +46,7 @@ import dbApi.calculaFechas;
 import dbApi.fuentes;
 import pacientes.formpacientes;
 import java.util.Date;
+import vertical.formVertical;
 
 // definición de la clase
 public class formtransplantes extends JDialog {
@@ -63,24 +64,47 @@ public class formtransplantes extends JDialog {
 	private Utilidades Herramientas;               // funciones de fecha
 	private ComboSiNo cPositivo;                   // positivo para chagas
 	private organos cOrgano;                       // combo de órganos
-	private formpacientes Padre;                   // formulario padre
 
-	// constructor de la clase
+	// constructor de la clase cuando es llamado 
+	// desde el formulario de pacientes
 	public formtransplantes(formpacientes padre) {
+			
+		// asignamos el protocolo
+		this.Protocolo = padre.getProtocolo();
+
+		// configuramos la interfaz
+		this.setupUi();
+
+	}
+
+	// constructor de la clase cuando es llamado 
+	// desde el formulario de vertical
+	public formtransplantes(formVertical padre){
+
+		// obtenemos el protocolo
+		this.Protocolo = padre.getProtocolo();
+
+		// configuramos la interfaz
+		this.setupUi();
+
+	}
+
+	/**
+	 * @author Claudio Invernizzi <cinvernizzi@dsgestion.site>
+	 * Método llamado desde el constructor que configura 
+	 * el formulario 
+	 */
+	protected void setupUi(){
 
 		// lo fijamos como modal
 		setModal(true);
-		
+
 		// instanciamos la fuente
 		fuentes Fuente = new fuentes();
-		
-		// inicializamos las variables
-		this.Padre = padre;
+
+		// instanciamos las clases
 		this.Cirugias = new transplantes();
 		this.Herramientas = new Utilidades();
-
-		// obtenemos el protocolo
-		this.Protocolo = Padre.getProtocolo();
 
 		// fijamos las propiedades
 		this.setSize(680, 300);

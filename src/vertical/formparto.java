@@ -71,7 +71,7 @@ public class formparto extends JDialog {
 	private Utilidades Herramientas;    // funciones de fecha
 	
 	// constructor del formulario
-	public formparto(formvertical padre) {
+	public formparto(formVertical padre) {
 
         // setea como modal
         setModal(true);
